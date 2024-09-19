@@ -37,5 +37,5 @@ npm run lint
 ## Backend flask
 
 ## Chatterbot library
-[Chatterbot documentation] (https://chatterbot.readthedocs.io/en/stable/)
+[Chatterbot documentation](https://chatterbot.readthedocs.io/en/stable/)
 
