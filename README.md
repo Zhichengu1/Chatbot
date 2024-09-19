@@ -1,4 +1,4 @@
-# frontend of my chatbot
+# chatbot
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -33,3 +33,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Backend flask
+
+## Chatterbot library
+[Chatterbot documentation] (https://chatterbot.readthedocs.io/en/stable/)
+
