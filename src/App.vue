@@ -1,12 +1,16 @@
 <template>
   <div class="chat-container">
     <div v-for="(message, index) in messages" :key="index" class="message">
-      <div>
+      <div v-if="message.type === 'user'">
         <font-awesome-icon icon="user" />
-        <b> : </b>
+        <b>User: </b> 
+        {{ message.text }}
       </div>
-      {{ message }}
-  
+      <div v-else-if="message.type === 'bot'">
+        <font-awesome-icon icon="robot" />
+        <b>Bot:</b> {{ message.text }}
+      </div>
+
     </div>
     
     <div class = "chat-input">
@@ -34,29 +38,53 @@ export default {
     };
   },
   computed: {
-    displayedMessages()
-    {
+    displayedMessages() {
       return this.messages.slice(0, this.maxDisplayedMessages);
     }
   },
-
   methods: {
     adjustInputWidth(event) {
       const input = event.target;
       input.style.width = `${input.value.length + 1}ch`;
     },
+    userMessage()
+    {
+      if (this.newMessage.trim() !== '') {
+        this.messages.unshift({ type: 'user', text: this.newMessage});
+      }
+    },
     sendMessage() {
       if (this.newMessage.trim() !== '') {
-        this.messages.unshift(this.newMessage);
-        this.newMessage = '';
-        if (this.messages.length > this.maxDisplayedMessages) {
-          this.messages.pop(); // Remove the oldest message
-        }
-        this.newMessage = '';
+        this.messages.unshift({ type: 'user', text: this.newMessage });
+        console.log('Sending message:', this.newMessage);
+        fetch('/send_messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: this.newMessage })
+        })
+        .then(response => response.json())
+        .then(text => {
+          console.log('Raw response:', text); // Log the raw response
+          return text ? JSON.parse(text) : {}; // Parse the JSON if not emp
+          })
+        .then(data => {
+          console.log('Success:', data);
+          this.messages.unshift({ type: 'bot', text: data.response });
+          this.newMessage = '';
+          if (this.messages.length > this.maxDisplayedMessages) {
+            this.messages.pop(); // Remove the oldest message
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          this.messages.unshift({ type: 'bot', text: 'An error occurred. Please try again.' });
+        });
       }
     }
   }
- };
+  }
 </script>
 
 <style scoped>
