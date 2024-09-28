@@ -11,6 +11,5 @@ This full stack chatbot application features a Flask backend for handling messag
 
 ## Backend flask
 
-## Chatterbot library
-[Chatterbot documentation](https://chatterbot.readthedocs.io/en/stable/)
-
+## LangChain LLM Frameworks
+[LangChain](https://python.langchain.com/docs/introduction/)
