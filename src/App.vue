@@ -57,34 +57,16 @@ export default {
       if (this.newMessage.trim() !== '') {
         this.messages.unshift({ type: 'user', text: this.newMessage });
         console.log('Sending message:', this.newMessage);
-        fetch('/send_messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ message: this.newMessage })
-        })
-        .then(response => response.json())
-        .then(text => {
-          console.log('Raw response:', text); // Log the raw response
-          return text ? JSON.parse(text) : {}; // Parse the JSON if not emp
-          })
-        .then(data => {
-          console.log('Success:', data);
-          this.messages.unshift({ type: 'bot', text: data.response });
-          this.newMessage = '';
-          if (this.messages.length > this.maxDisplayedMessages) {
-            this.messages.pop(); // Remove the oldest message
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          this.messages.unshift({ type: 'bot', text: 'An error occurred. Please try again.' });
-        });
+        if (this.messages.length > this.maxDisplayedMessages) {
+          this.messages.pop(); // Remove the oldest message
       }
     }
-  }
-  }
+  },
+  mounted() {
+    
+  },
+}
+}
 </script>
 
 <style scoped>
