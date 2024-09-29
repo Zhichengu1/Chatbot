@@ -2,13 +2,10 @@
   <div class="chat-container">
     <div v-for="(message, index) in messages" :key="index" class="message">
       <div v-if="message.type === 'user'">
+        
         <font-awesome-icon icon="user" />
-        <b>User: </b> 
+        <b> : </b> 
         {{ message.text }}
-      </div>
-      <div v-else-if="message.type === 'bot'">
-        <font-awesome-icon icon="robot" />
-        <b>Bot:</b> {{ message.text }}
       </div>
 
     </div>
@@ -93,7 +90,7 @@ export default {
     width: 70%; /* Adjust width as needed */
     height: 40px; /* Adjust height as needed */
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 1px;
     border: 1px solid #ccc;
 
 }
@@ -118,11 +115,12 @@ export default {
   font-size: large;
   font-family: 'Times New Roman', Times, serif;
   color: 000000;
-  max-height: 100px; /* Limit the height of each message */
+  max-height: 10000px; /* Limit the height of each message */
   overflow: hidden; /* Hide overflow content */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
   border: 1px solid cadetblue;
   animation: 0.5s linear 1s infinite running shake;
+  border-radius: 10px;
 }
 
 /*
