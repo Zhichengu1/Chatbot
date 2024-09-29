@@ -11,6 +11,6 @@ This full stack chatbot application features a Flask backend for handling messag
 
 ## Backend flask
 
-## LangChain LLM Frameworks
-[LangChain](https://python.langchain.com/docs/introduction/)
-[Reference](https://python.langchain.com/docs/tutorials/chatbot/)
+## Spacy
+[Spacy](https://spacy.io/usage/spacy-101#whats-spacy)
+[Reference](https://spacy.io/usage/spacy-101#training)
