@@ -1,13 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import spacy
+import spacy, emoji
 
 app = Flask(__name__)
 CORS(app)
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm") #load standard language english
 text_messages = []
 token_list = []
-name = "littlebot"
 
 # The route for processing user message and response
 @app.route('/message_input', methods=['GET', 'POST'])
@@ -24,11 +23,59 @@ def message_input():
         else:
             return jsonify({"response": "No messages received yet"}), 200
 
+
+#routes for other purposes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#fucntions
 # Code for string recognition
 def token_response(text):
     doc = nlp(text)
-    tokens = [token.text for token in doc]
-    return " ".join(tokens)
+    if text[-1] == '?':  # Check if the last character of the text is a question mark
+        return "I don't know"
+    return "my name i"
+
+
+
+
+# read file and print the emoji
+def read_emoji():
+    return " no emoji find"
+
+
+
+# math solver
+def math_solver() -> int:
+    return 0
+
+
+#interactive disscussion
+def disscussion() -> str:
+    return "i like"
+    
+#give back url
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
