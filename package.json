@@ -4,21 +4,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run serve\" \"npm run backend\"",
+    "serve": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "backend": "nodemon --watch backend --exec \"backend\\venv\\Scripts\\activate && python backend/bot.py\"",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "axios": "^1.7.7",
     "vue": "^3.4.29"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "concurrently": "^9.0.1",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "nodemon": "^3.1.7",
     "vite": "^5.4.7"
   }
 }
+
