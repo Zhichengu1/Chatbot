@@ -25,21 +25,7 @@ def message_input():
 
 
 
-
-
-
-#routes for other purposes
-
-
-
-
-
-
-
- 
- 
- 
- 
+#------------------------------------api-----------------------------------------------------
 
 
 
@@ -48,12 +34,10 @@ def message_input():
 
 
 
-
-
-
+#-----------------------------------helper functions------------------------------------------
 
 #fucntions
-# Code for string recognition
+# Code for string recognition 
 def token_response(text):
     doc = nlp(text)
     if text[-1] == '?':  # Check if the last character of the text is a question mark
@@ -69,7 +53,9 @@ def read_emoji():
 
 
 
-# math solver
+# given a string (text) from the route message input: 
+# define what the question is asking and perform the operations based on the question.
+# int type should be return and there should be a parameter being pass in. def math_solver(text), where text is the parameter
 def math_solver() -> int:
     return 0
 
@@ -79,8 +65,6 @@ def disscussion() -> str:
     return "i like"
     
 #give back url
-
-
 
 
 
